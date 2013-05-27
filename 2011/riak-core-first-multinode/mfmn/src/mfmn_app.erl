@@ -15,6 +15,7 @@ start(_StartType, _StartArgs) ->
             %ok = riak_core:register_vnode_module(mfmn_vnode),
             ok = riak_core:register([{vnode_module, mfmn_vnode}]),
             ok = riak_core_node_watcher:service_up(mfmn, self()),
+            riak_core_ring_manager:set_cluster_name(aaa),
             {ok, Pid};
         {error, Reason} ->
             {error, Reason}
